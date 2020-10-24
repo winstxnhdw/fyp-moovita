@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
-import rospy, datetime, threading
+import rospy
+import datetime
+import threading
 import numpy as np
 
 from ngeeann_av_nav.msg import State2D, Path2D

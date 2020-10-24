@@ -1,7 +1,0 @@
-<launch>
-
-	<node pkg="occ_grid_mapping" type="mapping" name="mapping" output="screen" clear_params="true">
-		<rosparam file="$(find occ_grid_mapping)/config/default.yaml" command="load" />
-	</node>
-
-</launch>

@@ -1,19 +1,13 @@
 #!/usr/bin/env python
 import threading
-import sys
-import math
 import rospy
 import numpy as np
 import numpy.ma as ma
-import matplotlib.pyplot as plt
+import sensor_msgs.point_cloud2 as pc2
 
 from geometry_msgs.msg import Pose, Point, Quaternion, Pose2D
 from ngeeann_av_nav.msg import Path2D, State2D
 from nav_msgs.msg import OccupancyGrid, MapMetaData
-import sensor_msgs.point_cloud2 as pc2
-
-#from ros_graph_slam.msg import PoseNode, Path2D
-# to be replaced by 
 from sensor_msgs.msg import LaserScan
 
 class Map(object):
@@ -283,8 +277,6 @@ class GridMapping(object):
 def main():
     """
         The main function.
-
-        It parses the arguments and sets up the GridMapping
     """
 
     gridmapping = GridMapping()
