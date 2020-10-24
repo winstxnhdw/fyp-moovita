@@ -197,8 +197,8 @@ def plot():
 
     x, y, v, a, j, yaw = quintic_polynomial_planner(x_i, y_i, yaw_i, v_i, a_i, x_f, y_f, yaw_f, v_f, a_f, max_accel, max_jerk, ds)
 
-    print('x: {}'.format(len(x)))
-    print('y: {}'.format(len(y)))
+    print('no. of cells in x: {}'.format(len(x)))
+    print('no. of cells in y: {}'.format(len(y)))
 
     import matplotlib.pyplot as plt
 

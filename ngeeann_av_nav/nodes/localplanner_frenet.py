@@ -137,6 +137,7 @@ class LocalPathPlanner:
         '''
         # Default direct path drawn across waypoints
         ocx, ocy, ocyaw, _, _ = calc_spline_course(self.ax, self.ay, self.ds)
+        
         # Validated path returned
         cx, cy, cyaw, collisions = self.determine_path(ocx, ocy, ocyaw)
 
