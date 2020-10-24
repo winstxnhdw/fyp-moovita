@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 import threading
 import rospy
 import numpy as np
@@ -10,20 +11,12 @@ from ngeeann_av_nav.msg import Path2D, State2D
 from nav_msgs.msg import OccupancyGrid, MapMetaData
 from sensor_msgs.msg import LaserScan
 
-class Map(object):
-
-    """ Map class stores occupancy grid as a two dimensional numpy array
-
-    Public instance variables:
-        width, height       -- Number of rows and columns in occupancy grid
-        resoltuion          -- Width of each grid cell square in meters
-        origin_x, origin_y  -- Position of grid cell(0,0) in map coordinate frame
-        grid                -- Numpy array
-    """
+class Map():
 
     def __init__(self, origin_x=0, origin_y=0, resolution=0.2, width=650, height=650):
-        """ Constructs an empty occupancy grid upon initialization """
-
+        ''' 
+        Constructs an empty occupancy grid upon initialization
+        '''
         self.origin_x = origin_x
         self.origin_y = origin_y
         self.resolution = resolution
@@ -34,57 +27,68 @@ class Map(object):
         # Creates occupied roadmap
         self.roadmap = np.zeros((height, width))
 
-        '''Lane Overrun Region'''
+        # Lane Overrun Region
         for r in np.arange(97, 100, 0.05):
-            for theta in np.arange(0, 0.5*np.pi, 0.001):
+            for theta in np.arange(0, 0.5 * np.pi, 0.001):
                 x = r * np.cos(theta)
                 y = r * np.sin(theta)
+
                 try:
                     ix = int((x - self.origin_x) / self.resolution)
                     iy = int((y - self.origin_y) / self.resolution)
                     self.roadmap[iy, ix] = 0.4
+
                 except:
                     pass
+
         for r in np.arange(107.5, 110.5, 0.05):
             for theta in np.arange(0, 0.5*np.pi, 0.001):
                 x = r * np.cos(theta)
                 y = r * np.sin(theta)
+
                 try:
                     ix = int((x - self.origin_x) / self.resolution)
                     iy = int((y - self.origin_y) / self.resolution)
                     self.roadmap[iy, ix] = 0.4
+
                 except:
                     pass
 
-        '''Add Barriers'''
+        # Add barriers
         for r in np.arange(110.5, 110.75, 0.05):
             for theta in np.arange(0, 0.5*np.pi, 0.001):
                 x = r * np.cos(theta)
                 y = r * np.sin(theta)
+
                 try:
                     ix = int((x - self.origin_x) / self.resolution)
                     iy = int((y - self.origin_y) / self.resolution)
                     self.roadmap[iy, ix] = 0.8
+
                 except:
                     pass
+
         for r in np.arange(96.75, 97, 0.05):
             for theta in np.arange(0, 0.5*np.pi, 0.001):
                 x = r * np.cos(theta)
                 y = r * np.sin(theta)
+
                 try:
                     ix = int((x - self.origin_x) / self.resolution)
                     iy = int((y - self.origin_y) / self.resolution)
                     self.roadmap[iy, ix] = 0.8
+
                 except:
                     pass
 
-        print('Road map initialised')
+        print('Road map initialised.')
         
         self.mask = self.roadmap
     
     def to_message(self):
-        """ Returns nav_msgs/OccupancyGrid representation of the map """
-
+        '''
+        Returns nav_msgs/OccupancyGrid representation of the map
+        '''
         grid_msg = OccupancyGrid()
 
         # Set up the header.
@@ -113,17 +117,20 @@ class Map(object):
         return grid_msg
 
     def set_cell(self, x, y, val):
-        """ Set the value of a cell in the grid. 
+        '''
+        Set the value of a cell in the grid. 
 
         Arguments: 
             x, y  - This is a point in the map coordinate frame.
             val   - This is the value that should be assigned to the
                     grid cell that contains (x,y).
-        """
+        '''
         ix = int((x - self.origin_x) / self.resolution)
         iy = int((y - self.origin_y) / self.resolution)
+
         if ix < 0 or iy < 0 or ix >= self.width or iy >= self.height:
             pass    # indicates map too small
+
         else:
             self.grid[iy, ix] = self.grid[iy, ix] + val
             self.grid[iy, ix] = np.clip(self.grid[iy, ix], 0, 1)
@@ -149,17 +156,19 @@ class GridMapping(object):
         rospy.Subscriber('/laser/scan', LaserScan, self.scan_cb)
 
     def publish_map(self, gmap):
-        """ Publishes map """
+        '''
+        Publishes map 
+        '''
         msg = gmap.to_message()
         self.viz_map_pub.publish(msg)
         print('Sent Map')
 
     def scan_cb(self, data):
-        #self.lock.acquire()
+
         self.scan = data
-        #self.lock.release()
 
     def vehicle_state_cb(self, data):
+
         # Fill gridmap
         #self.lock.acquire()
         self.x = data.pose.x
@@ -180,7 +189,6 @@ class GridMapping(object):
         print('Distance forwards = {}'.format(self.scan.ranges[360]))
         
         for i in range(0, len(self.scan.ranges)):
-
             theta = i * angle_increment
 
             # Draws an individual line representitive of a single line of measurement within the LIDAR
@@ -241,8 +249,6 @@ class GridMapping(object):
 
         self.publish_map(self.gmap)
         
-
-
     def frame_transform(self, point_x, point_y):
         ''' 
             Recieves position of a point in the vehicle frame, and the position and orientation of the
@@ -272,16 +278,13 @@ class GridMapping(object):
 
         return transform 
 
-
-
 def main():
-    """
+    '''
         The main function.
-    """
-
+    '''
     gridmapping = GridMapping()
 
-    rospy.init_node("gridmapping_node")
+    rospy.init_node("bof")
 
     r = rospy.Rate(10)
 
@@ -293,7 +296,6 @@ def main():
         except KeyboardInterrupt:
             print("\n")
             print("Shutting down ROS node...")
-
 
 if __name__ == "__main__":
     main()

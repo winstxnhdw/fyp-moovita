@@ -37,9 +37,6 @@ class PathTracker:
         except:
             raise Exception("Missing ROS parameters. Check the configuration file.")
 
-        # Class constants
-        self.halfpi = np.pi / 2
-
         # Class variables to use whenever within the class when necessary
         self.x = None
         self.y = None
@@ -111,7 +108,7 @@ class PathTracker:
         self.crosstrack_error = np.dot([dx[target_idx], dy[target_idx]], front_axle_vec)
 
         # Heading error
-        self.heading_error = normalise_angle(self.cyaw[target_idx] - self.yaw - self.halfpi)
+        self.heading_error = normalise_angle(self.cyaw[target_idx] - self.yaw - np.pi * 0.5)
         self.target_idx = target_idx
 
         # Yaw rate discrepancy

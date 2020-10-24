@@ -10,6 +10,22 @@ from std_msgs.msg import Float32
 from utils.cubic_spline_planner import *
 from utils.spline_planner import *
 
+class FrenetPath:
+
+    def __init__(self):
+
+        # Intialise the longitudinal frenet coordinates
+        self.s = []
+        self.s_s = []
+        self.s_ss = []
+        self.s_sss = []
+
+        # Initialise the lateral frenet coordinates
+        self.d = []
+        self.d_d = []
+        self.d_dd = []
+        self.d_ddd = []
+
 class LocalPathPlanner:
 
     def __init__(self):
@@ -32,7 +48,6 @@ class LocalPathPlanner:
             self.planner_params = rospy.get_param("/local_path_planner")
             self.frequency = self.planner_params["update_frequency"]
             self.frame_id = self.planner_params["frame_id"]
-            self.target_vel_def = self.planner_params["target_velocity"]
             self.car_width = self.planner_params["car_width"]
             self.cg2frontaxle = self.planner_params["centreofgravity_to_frontaxle"]
 
@@ -40,13 +55,12 @@ class LocalPathPlanner:
             raise Exception("Missing ROS parameters. Check the configuration file.")
 
         # Class constants
-        self.halfpi = np.pi / 2
-        self.ds = 0.1
+        self.ds = 1 / self.frequency
         self.origin_x = 0
         self.origin_y = 0
 
         # Class variables to use whenever within the class when necessary
-        self.target_vel = self.target_vel_def
+        self.target_vel = 3.0
         self.ax = []
         self.ay = []
         self.gmap = OccupancyGrid()
@@ -79,6 +93,12 @@ class LocalPathPlanner:
         Callback function to recieve map data
         '''
         self.gmap = msg
+
+    def calc_frenet_path():
+        
+        frenet_path = []
+
+        for index in np.arange()
 
     def target_index_calculator(self, cx, cy):  
         ''' 

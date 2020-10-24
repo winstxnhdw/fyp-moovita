@@ -4,7 +4,6 @@ localisation:
 
 local_path_planner:
     update_frequency: 10.0
-    target_velocity: 3.0
     car_width: 2.0
     centreofgravity_to_frontaxle: 1.483
     frame_id: base_link
