@@ -12,7 +12,7 @@ class QuinticPolynomial:
         self.a_2 = init_accel / 2.0
 
         # Solve the linear equation (Ax = B)
-        A = np.array([[dist ** 3,       dist ** 4,        dist ** 5], 
+        A = np.array([[dist ** 3,      dist ** 4,        dist ** 5], 
                      [3 * dist ** 2,   4 * dist ** 3,    5 * dist ** 4],
                      [6 * dist,        12 * dist ** 2,   20 * dist ** 3]])
 

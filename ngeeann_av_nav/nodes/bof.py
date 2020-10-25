@@ -11,7 +11,7 @@ from ngeeann_av_nav.msg import Path2D, State2D
 from nav_msgs.msg import OccupancyGrid, MapMetaData
 from sensor_msgs.msg import LaserScan
 
-class Map():
+class Map:
 
     def __init__(self, origin_x=0, origin_y=0, resolution=0.2, width=650, height=650):
         ''' 
