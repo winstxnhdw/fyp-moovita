@@ -7,6 +7,7 @@ from geometry_msgs.msg import PoseStamped, Quaternion, Pose2D
 from ngeeann_av_nav.msg import Path2D, State2D
 from nav_msgs.msg import Path, OccupancyGrid, MapMetaData
 from std_msgs.msg import Float32
+from utils.heading2quaternion import heading_to_quaternion
 from utils.cubic_spline_planner import *
 from utils.spline_planner import *
 
@@ -151,13 +152,10 @@ class LocalPathPlanner:
 
         return cx, cy, cyaw, collisions
 
-    def create_pub_path(self):
+    def create_viz_path(self):
         ''' 
-        Uses the cubic_spline_planner library to interpolate a cubic spline path over the given waypoints 
+        Publish paths to RViz
         '''
-        # Default direct path drawn across waypoints
-        ocx, ocy, ocyaw, _, _ = calc_spline_course(self.ax, self.ay, self.ds)
-        
         # Validated path returned
         cx, cy, cyaw, collisions = self.determine_path(ocx, ocy, ocyaw)
 
@@ -184,23 +182,16 @@ class LocalPathPlanner:
             vpose.pose.position.x = cx[n]
             vpose.pose.position.y = cy[n]
             vpose.pose.position.z = 0.0
-            vpose.pose.orientation = self.heading_to_quaternion(np.pi * 0.5 - cyaw[n])
+            vpose.pose.orientation = heading_to_quaternion(np.pi * 0.5 - cyaw[n])
             viz_path.poses.append(vpose)
 
-        self.local_planner_pub.publish(target_path)
         self.path_viz_pub.publish(viz_path)
 
-    def heading_to_quaternion(self, heading):
-        ''' 
-        Converts yaw heading to quaternion coordinates.
+    def create_target_path(self):
         '''
-        quaternion = Quaternion()
-        quaternion.x = 0.0
-        quaternion.y = 0.0
-        quaternion.z = np.sin(heading / 2)
-        quaternion.w = np.cos(heading / 2)
-
-        return quaternion
+        Default path draw across waypoints
+        '''
+        ocx, ocy, ocyaw = calc_spline_course(self.ax, self.ay, self.ds)
 
 def main():
     ''' 
@@ -221,7 +212,7 @@ def main():
 
     while not rospy.is_shutdown():
         try:
-            local_planner.create_pub_path()
+            target_path = local_planner.create_target_path()
             local_planner.target_vel_pub.publish(local_planner.target_vel)
 
             r.sleep()
