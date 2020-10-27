@@ -101,6 +101,9 @@
 	<param name="waypoints" type="string" value="$(find ngeeann_av_nav)/scripts/$(arg file_name)"/>
 	<node name="global_planner" pkg="ngeeann_av_nav" type="globalplanner.py"/>
 
+	<!-- Bayesian Occupancy Filter node -->
+	<node name="bof" pkg="ngeeann_av_nav" type="bof.py"/>
+
 	<!-- Navigation parameters -->
 	<rosparam file="$(find ngeeann_av_nav)/config/navigation_params.yaml"/>
 

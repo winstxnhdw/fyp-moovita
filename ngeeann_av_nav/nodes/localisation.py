@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 
 import rospy
-import numpy as np
 import tf
+import numpy as np
+
 from gazebo_msgs.srv import GetModelState  
 from nav_msgs.msg import Odometry
 from ngeeann_av_nav.msg import State2D
@@ -67,7 +68,6 @@ class Localisation:
         odom.pose.pose.orientation.z = self.state.pose.orientation.z
         odom.pose.pose.orientation.w = self.state.pose.orientation.w
 
-
         odom.header.stamp = rospy.Time.now()
         odom.header.frame_id = "/map"
         odom.pose.pose.orientation = self.state.pose.orientation
@@ -80,7 +80,6 @@ class Localisation:
         print("Heading: {}".format(round(state2d.pose.theta, 5)))
         print("Velocity (x,y): ({},{})".format(round(state2d.twist.x, 5), round(state2d.twist.y, 5)))
 
-
     # Publishes map frame transform
     def update_odom(self):
 
@@ -90,7 +89,6 @@ class Localisation:
         z = self.state.pose.position.z
         odom_quat = [self.state.pose.orientation.x, self.state.pose.orientation.y, self.state.pose.orientation.z, self.state.pose.orientation.w]
         self.map_broadcaster.sendTransform((x, y, z), odom_quat, rospy.Time.now(), "base_link", "map")
-
 
 def main():
 

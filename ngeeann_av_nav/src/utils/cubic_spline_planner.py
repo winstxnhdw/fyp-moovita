@@ -175,7 +175,7 @@ def calc_spline_course(x, y, ds=0.1):
         ryaw.append(sp.calc_yaw(i_s))
         rk.append(sp.calc_curvature(i_s))
 
-    return rx, ry, ryaw, rk, s
+    return rx, ry, ryaw
 
 def main():
     """

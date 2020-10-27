@@ -4,7 +4,7 @@ import numpy as np
 
 class QuinticPolynomial:
 
-    def __init__(self, init_pos, init_vel, init_accel, final_pos, final_vel, final_accel, dist):
+    def __init__(self, init_pos, init_vel, init_accel, final_pos, final_vel, final_accel, T):
 
         # Derived coefficients
         self.a_0 = init_pos
@@ -12,11 +12,11 @@ class QuinticPolynomial:
         self.a_2 = init_accel / 2.0
 
         # Solve the linear equation (Ax = B)
-        A = np.array([[dist ** 3,       dist ** 4,        dist ** 5], 
-                     [3 * dist ** 2,   4 * dist ** 3,    5 * dist ** 4],
-                     [6 * dist,        12 * dist ** 2,   20 * dist ** 3]])
+        A = np.array([[T ** 3,       T ** 4,         T ** 5], 
+                     [3 * T ** 2,    4 * T ** 3,     5 * T ** 4],
+                     [6 * T,         12 * T ** 2,    20 * T ** 3]])
 
-        B = np.array([final_pos - self.a_0 - self.a_1 * dist - self.a_2 * dist ** 2, final_vel - self.a_1 - init_accel * dist, final_accel - init_accel])
+        B = np.array([final_pos - self.a_0 - self.a_1 * T - self.a_2 * T ** 2, final_vel - self.a_1 - init_accel * T, final_accel - init_accel])
 
         x = np.linalg.solve(A, B)
 
@@ -24,42 +24,52 @@ class QuinticPolynomial:
         self.a_4 = x[1]
         self.a_5 = x[2]
 
-    def calc_point(self, s):
+    def calc_point(self, t):
+        '''
+        Calculate the point
+        '''
+        dt = self.a_0 + self.a_1 * t + self.a_2 * t ** 2 + self.a_3 * t ** 3 + self.a_4 * t ** 4 + self.a_5 * t ** 5
 
-        xs = self.a_0 + self.a_1 * s + self.a_2 * s ** 2 + self.a_3 * s ** 3 + self.a_4 * s ** 4 + self.a_5 * s ** 5
+        return dt
 
-        return xs
+    def calc_first_derivative(self, t):
+        '''
+        Calculate the velocity (m/s)
+        '''
+        dt = self.a_1 + 2 * self.a_2 * t + 3 * self.a_3 * t ** 2 + 4 * self.a_4 * t ** 3 + 5 * self.a_5 * t ** 4
 
-    def calc_first_derivative(self, s):
+        return dt
 
-        xs = self.a_1 + 2 * self.a_2 * s + 3 * self.a_3 * s ** 2 + 4 * self.a_4 * s ** 3 + 5 * self.a_5 * s ** 4
+    def calc_second_derivative(self, t):
+        '''
+        Calculate the acceleration (m/s^2)
+        '''
+        dt = 2 * self.a_2 + 6 * self.a_3 * t + 12 * self.a_4 * t ** 2 + 20 * self.a_5 * t ** 3
 
-        return xs
+        return dt
 
-    def calc_second_derivative(self, s):
+    def calc_third_derivative(self, t):
+        '''
+        Calculate the jerk (m/s^3)
+        '''
+        dt = 6 * self.a_3 + 24 * self.a_4 * t + 60 * self.a_5 * t ** 2
 
-        xs = 2 * self.a_2 + 6 * self.a_3 * s + 12 * self.a_4 * s ** 2 + 20 * self.a_5 * s ** 3
-
-        return xs
-
-    def calc_third_derivative(self, s):
-
-        xs = 6 * self.a_3 + 24 * self.a_4 * s + 60 * self.a_5 * s ** 2
-
-        return xs
+        return dt
 
 class QuarticPolynomial:
 
-    def __init__(self, init_pos, init_vel, init_accel, final_vel, final_accel, dist):
+    def __init__(self, init_pos, init_vel, init_accel, final_vel, final_accel, T):
 
+        # Derived coefficients
         self.a_0 = init_pos
         self.a_1 = init_vel
         self.a_2 = init_accel / 2.0
 
-        A = np.array([[3 * dist ** 2,  4 * dist ** 3],
-                      [6 * dist,       12 * dist ** 2]])
+        # Solve the linear equation (Ax = B)
+        A = np.array([[3 * T ** 2,    4 * T ** 3],
+                      [6 * T,         12 * T ** 2]])
 
-        B = np.array([final_vel - self.a_1 - init_accel * dist,
+        B = np.array([final_vel - self.a_1 - init_accel * T,
                       final_accel - init_accel])
 
         x = np.linalg.solve(A, B)
@@ -67,29 +77,37 @@ class QuarticPolynomial:
         self.a_3 = x[0]
         self.a_4 = x[1]
 
-    def calc_point(self, s):
+    def calc_point(self, t):
+        '''
+        Calculate the point
+        '''
+        st = self.a_0 + self.a_1 * t + self.a_2 * t ** 2 + self.a_3 * t ** 3 + self.a_4 * t ** 4
 
-        xs = self.a_0 + self.a_1 * s + self.a_2 * s ** 2 + self.a_3 * s ** 3 + self.a_4 * s ** 4
+        return st
 
-        return xs
+    def calc_first_derivative(self, t):
+        '''
+        Calculate the velocity (m/s)
+        '''
+        st = self.a_1 + 2 * self.a_2 * t + 3 * self.a_3 * t ** 2 + 4 * self.a_4 * t ** 3
 
-    def calc_first_derivative(self, s):
+        return st
 
-        xs = self.a_1 + 2 * self.a_2 * s + 3 * self.a_3 * s ** 2 + 4 * self.a_4 * s ** 3
+    def calc_second_derivative(self, t):
+        '''
+        Calculate the acceleration (m/s^2)
+        '''
+        st = 2 * self.a_2 + 6 * self.a_3 * t + 12 * self.a_4 * t ** 2
 
-        return xs
+        return st
 
-    def calc_second_derivative(self, s):
+    def calc_third_derivative(self, t):
+        '''
+        Calculate the jerk (m/s^3)
+        '''
+        st = 6 * self.a_3 + 24 * self.a_4 * t
 
-        xs = 2 * self.a_2 + 6 * self.a_3 * s + 12 * self.a_4 * s ** 2
-
-        return xs
-
-    def calc_third_derivative(self, s):
-
-        xs = 6 * self.a_3 + 24 * self.a_4 * s
-
-        return xs
+        return st
 
 class CubicPolynomial:
 
@@ -100,7 +118,11 @@ class CubicPolynomial:
         self.c = init_vel
         self.b = init_accel / 2.0
 
-def quintic_polynomial_planner(x_i, y_i, yaw_i, v_i, a_i, x_f, y_f, yaw_f, v_f, a_f, max_accel, max_jerk, ds):
+def quintic_polynomial_planner(x_i, y_i, yaw_i, v_i, a_i, x_f, y_f, yaw_f, v_f, a_f, max_accel, max_jerk, dt):
+
+    # Setting the time horizon
+    max_time = 100.0
+    min_time = 5.0
     
     # Calculate the velocity boundary conditions based on vehicle's orientation
     v_xi = v_i * np.cos(yaw_i)
@@ -114,10 +136,10 @@ def quintic_polynomial_planner(x_i, y_i, yaw_i, v_i, a_i, x_f, y_f, yaw_f, v_f, 
     a_yi = a_i * np.sin(yaw_i)
     a_yf = a_f * np.sin(yaw_f)
 
-    for S in np.arange(1.0, 1000.0, 1.0):
+    for T in np.arange(min_time, max_time, min_time):
         # Initialise the class
-        xqp = QuinticPolynomial(x_i, v_xi, a_xi, x_f, v_xf, a_xf, S)
-        yqp = QuinticPolynomial(y_i, v_yi, a_yi, y_f, v_yf, a_yf, S)
+        xqp = QuinticPolynomial(x_i, v_xi, a_xi, x_f, v_xf, a_xf, T)
+        yqp = QuinticPolynomial(y_i, v_yi, a_yi, y_f, v_yf, a_yf, T)
 
         # Instantiate/clear the arrays
         x = []
@@ -127,22 +149,22 @@ def quintic_polynomial_planner(x_i, y_i, yaw_i, v_i, a_i, x_f, y_f, yaw_f, v_f, 
         j = []
         yaw = []
 
-        for s in np.arange(0.0, S + ds, ds):
+        for t in np.arange(0.0, T + dt, dt):
             # Solve for position (m)
-            x.append(xqp.calc_point(s))
-            y.append(yqp.calc_point(s))
+            x.append(xqp.calc_point(t))
+            y.append(yqp.calc_point(t))
 
             # Solve for velocity (m/s)
-            v_x = xqp.calc_first_derivative(s)
-            v_y = yqp.calc_first_derivative(s)
+            v_x = xqp.calc_first_derivative(t)
+            v_y = yqp.calc_first_derivative(t)
             v.append(np.hypot(v_x, v_y))
 
             # Solve for orientation (rad)
             yaw.append(np.arctan2(v_y, v_x))
 
             # Solve for acceleration (m/s^2)
-            a_x = xqp.calc_second_derivative(s)
-            a_y = yqp.calc_second_derivative(s)
+            a_x = xqp.calc_second_derivative(t)
+            a_y = yqp.calc_second_derivative(t)
 
             if len(v) >= 2 and v[-1] - v[-2] < 0.0:
                 a.append(-1.0 * np.hypot(a_x, a_y))
@@ -151,8 +173,8 @@ def quintic_polynomial_planner(x_i, y_i, yaw_i, v_i, a_i, x_f, y_f, yaw_f, v_f, 
                 a.append(np.hypot(a_x, a_y))
         
             # Solve for jerk (m/s^3)
-            j_x = xqp.calc_third_derivative(s)
-            j_y = yqp.calc_third_derivative(s)
+            j_x = xqp.calc_third_derivative(t)
+            j_y = yqp.calc_third_derivative(t)
             
             if len(a) >= 2 and a[-1] - a[-2] < 0.0:
                 j.append(-1 * np.hypot(j_x, j_y))
@@ -179,7 +201,7 @@ def plot():
     x_i = -10.0
     y_i = 10.0
     yaw_i = np.deg2rad(10.0)
-    v_i = 1.0
+    v_i = 4.0
     a_i = 0.1
     
     # Final values
@@ -192,13 +214,13 @@ def plot():
     # Limits (Source: http://www.diva-portal.org/smash/get/diva2:839140/FULLTEXT01.pdf [Pg. 6])
     max_accel = 2.0
     max_jerk = 0.9
-    ds = 0.1
+    dt = 0.1
     limits = max(abs(x_i), abs(x_f), abs(y_i), abs(y_f)) + 10.0
 
-    x, y, v, a, j, yaw = quintic_polynomial_planner(x_i, y_i, yaw_i, v_i, a_i, x_f, y_f, yaw_f, v_f, a_f, max_accel, max_jerk, ds)
+    x, y, v, a, j, yaw = quintic_polynomial_planner(x_i, y_i, yaw_i, v_i, a_i, x_f, y_f, yaw_f, v_f, a_f, max_accel, max_jerk, dt)
 
-    print('x: {}'.format(len(x)))
-    print('y: {}'.format(len(y)))
+    print('no. of cells in x: {}'.format(len(x)))
+    print('no. of cells in y: {}'.format(len(y)))
 
     import matplotlib.pyplot as plt
 

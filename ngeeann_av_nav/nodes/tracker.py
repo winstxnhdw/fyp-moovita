@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
-import rospy, datetime, threading
+import rospy
+import datetime
+import threading
 import numpy as np
 
 from ngeeann_av_nav.msg import State2D, Path2D
@@ -8,6 +10,7 @@ from ackermann_msgs.msg import AckermannDrive
 from geometry_msgs.msg import Pose2D, PoseStamped, Quaternion
 from std_msgs.msg import Float32
 from utils.normalise_angle import normalise_angle
+from utils.heading2quaternion import heading_to_quaternion
 
 class PathTracker:
 
@@ -34,9 +37,6 @@ class PathTracker:
         
         except:
             raise Exception("Missing ROS parameters. Check the configuration file.")
-
-        # Class constants
-        self.halfpi = np.pi / 2
 
         # Class variables to use whenever within the class when necessary
         self.x = None
@@ -109,7 +109,7 @@ class PathTracker:
         self.crosstrack_error = np.dot([dx[target_idx], dy[target_idx]], front_axle_vec)
 
         # Heading error
-        self.heading_error = normalise_angle(self.cyaw[target_idx] - self.yaw - self.halfpi)
+        self.heading_error = normalise_angle(self.cyaw[target_idx] - self.yaw - np.pi * 0.5)
         self.target_idx = target_idx
 
         # Yaw rate discrepancy
@@ -125,19 +125,8 @@ class PathTracker:
         pose.pose.position.x = self.cx[target_idx]
         pose.pose.position.y = self.cy[target_idx]
         pose.pose.position.z = 0.0
-        pose.pose.orientation = self.heading_to_quaternion(self.cyaw[target_idx])
+        pose.pose.orientation = heading_to_quaternion(self.cyaw[target_idx])
         self.lateral_ref_pub.publish(pose)
-
-    def heading_to_quaternion(self, heading):
-        ''' Converts yaw heading to quaternion coordinates '''
-
-        quaternion = Quaternion()
-        quaternion.x = 0.0
-        quaternion.y = 0.0
-        quaternion.z = np.sin(heading / 2)
-        quaternion.w = np.cos(heading / 2)
-
-        return quaternion
     
     # Calculates the desired yawrate of the vehicle
     def trajectory_yawrate_calc(self):
@@ -185,19 +174,6 @@ class PathTracker:
             sigma_t = -self.max_steer
 
         self.set_vehicle_command(self.target_vel, sigma_t)
-        self.lock.release()
-
-    # Normalises angle to -pi to pi
-    def normalise_angle(self, angle):
-
-        while angle > np.pi:
-            angle -= 2 * np.pi
-
-        while angle < -np.pi:
-            angle += 2 * np.pi
-
-        return angle
-
         self.lock.release()
 
     # Publishes to vehicle state
