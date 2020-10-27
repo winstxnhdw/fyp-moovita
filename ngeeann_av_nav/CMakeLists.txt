@@ -171,7 +171,6 @@ catkin_install_python(PROGRAMS
   nodes/localplanner.py
   nodes/localisation.py
   nodes/tracker.py
-  nodes/pose2D_to_odom.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
