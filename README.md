@@ -1,6 +1,8 @@
 # AUTONOMOUS VEHICLE: CONTROL AND BEHAVIOUR
 ### Ngee Ann Polytechnic Engineering Science Final Year Project with MooVita, 2020
 ![ngeeann_av](https://github.com/reuben-thomas/fyp-moovita/blob/master/screenshots/ngeeann_av_ultrawide.png?raw=true)
+![1](https://github.com/winstxnhdw/AutoCarROS/blob/master/screenshots/1.gif?raw=true)
+![2](https://github.com/winstxnhdw/AutoCarROS/blob/master/screenshots/2.gif?raw=true)
 
 ## Abstract
 This project covers the development of a robust non-holonomic autonomous vehicle platform in a simulated environment using ROS and Gazebo. A sense-think-act cycle is implemented to navigate the virtual world, avoiding static and moving objects.
@@ -145,3 +147,5 @@ Launches nodes used by both RViz and Gazebo when visualizing a vehicle with Acke
 
 ## Renders
 ![Renders](https://github.com/reuben-thomas/fyp-moovita/blob/master/screenshots/renders.gif?raw=true)
+![3](https://github.com/winstxnhdw/AutoCarROS/blob/master/screenshots/3.gif?raw=true)
+![4](https://github.com/winstxnhdw/AutoCarROS/blob/master/screenshots/4.gif?raw=true)
