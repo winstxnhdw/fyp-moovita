@@ -8,7 +8,7 @@ This project covers the development of a robust non-holonomic autonomous vehicle
 <br />
 ![Obstacle Avoidance](https://github.com/reuben-thomas/fyp-moovita/blob/master/screenshots/obstacle_avoidance.gif?raw=true)
 
-# Table of Contents
+## Table of Contents
 - [Abstract](#Abstract)
 - [Requirements](#Requirements)
   - [Operating System](#Operating-System)
