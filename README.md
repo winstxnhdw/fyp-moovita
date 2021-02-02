@@ -146,7 +146,7 @@ Launches nodes used by both RViz and Gazebo when visualizing a vehicle with Acke
 ## Renders
 Because work is meaningless if it doesn't look cool.
 ![Renders](https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/screenshots/renders.gif?raw=true)
-![1](https://github.com/winstxnhdw/AutoCarROS/blob/master/screenshots/1.gif?raw=true)
-![2](https://github.com/winstxnhdw/AutoCarROS/blob/master/screenshots/2.gif?raw=true)
-![3](https://github.com/winstxnhdw/AutoCarROS/blob/master/screenshots/3.gif?raw=true)
-![4](https://github.com/winstxnhdw/AutoCarROS/blob/master/screenshots/4.gif?raw=true)
+![1](https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/screenshots/1.gif?raw=true)
+![2](https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/screenshots/2.gif?raw=true)
+![3](https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/screenshots/3.gif?raw=true)
+![4](https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/screenshots/4.gif?raw=true)
