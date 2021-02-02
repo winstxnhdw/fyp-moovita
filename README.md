@@ -1,12 +1,12 @@
 # AUTONOMOUS VEHICLE: CONTROL AND BEHAVIOUR
 ### Ngee Ann Polytechnic Engineering Science Final Year Project with MooVita, 2020
-![ngeeann_av](https://github.com/winstxnhdw/AutoCarROS/tree/master/resources/screenshots/ngeeann_av_ultrawide.png?raw=true)
+![ngeeann_av](https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/screenshots/ngeeann_av_ultrawide.png?raw=true)
 
 ## Abstract
 This project covers the development of a robust non-holonomic autonomous vehicle platform in a simulated environment using ROS and Gazebo. A sense-think-act cycle is implemented to navigate the virtual world, avoiding static and moving objects.
 <br />
 <br />
-![Obstacle Avoidance](https://github.com/winstxnhdw/AutoCarROS/tree/master/resources/screenshots/obstacle_avoidance.gif?raw=true)
+![Obstacle Avoidance](https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/screenshots/obstacle_avoidance.gif?raw=true)
 
 ## Table of Contents
 - [Abstract](#Abstract)
@@ -87,7 +87,7 @@ Recommended its equivalent or higher:
 
 ## Scripts
 ### circle_road_gen.py
-![Road Generation](https://github.com/winstxnhdw/AutoCarROS/tree/master/resources/screenshots/road_gen.gif?raw=true)
+![Road Generation](https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/screenshots/road_gen.gif?raw=true)
 
 #### Description
 circle_road_gen.py is a custom script which uses the NumPy library to calculate and generate the three-dimensional <point> coordinates of a circle for Gazebo's world file. This is primarily used to create a circular road of a certain radius and smoothness. The radius of the circle is calculated from the centre of the circle to the middle of the road (using Gazebo's SDF tag).
@@ -106,7 +106,7 @@ circle_road_gen.py is a custom script which uses the NumPy library to calculate 
    - Copy and paste result into your world file
   
 ### circle_wp_gen.py
-![circle_wp_gen](https://github.com/winstxnhdw/AutoCarROS/tree/master/resources/screenshots/circle_wp_gen.png?raw=true)
+![circle_wp_gen](https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/screenshots/circle_wp_gen.png?raw=true)
 #### Description
 circle_wp_gen.py is a custom script which uses the NumPy and pandas library to calculate and generate a csv file that contains the two-dimensional coordinates; x-axis and y-axis in their respective columns. This is primarily used to generate waypoints on a circular road of a certain radius and smoothness. The user is given two different smoothness modes; Point mode and Angle mode. The radius of the circle is calculated from the centre of gazebo world.
 
@@ -145,7 +145,7 @@ Launches nodes used by both RViz and Gazebo when visualizing a vehicle with Acke
 
 ## Renders
 Because work is meaningless if it doesn't look cool.
-![Renders](https://github.com/winstxnhdw/AutoCarROS/tree/master/resources/screenshots/renders.gif?raw=true)
+![Renders](https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/screenshots/renders.gif?raw=true)
 ![1](https://github.com/winstxnhdw/AutoCarROS/blob/master/screenshots/1.gif?raw=true)
 ![2](https://github.com/winstxnhdw/AutoCarROS/blob/master/screenshots/2.gif?raw=true)
 ![3](https://github.com/winstxnhdw/AutoCarROS/blob/master/screenshots/3.gif?raw=true)
