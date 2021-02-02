@@ -144,7 +144,8 @@ Launches the populated_road.world file into Gazebo and spawns the ngeeann_av ont
 Launches nodes used by both RViz and Gazebo when visualizing a vehicle with Ackermann steering.
 ## Renders
 <b>"Because work is meaningless if it doesn't look cool."<b>
-<br \>
+<br />
+<br />
 ![Renders](https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/gifs/renders.gif?raw=true)
 ![1](https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/gifs/1.gif?raw=true)
 ![2](https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/gifs/2.gif?raw=true)
