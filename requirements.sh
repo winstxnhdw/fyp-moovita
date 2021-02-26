@@ -29,7 +29,3 @@ sudo apt-get install python-pip -y
 pip install --upgrade pip
 pip install numpy
 pip install pandas
-
-# git clones
-cd ..
-git clone https://github.com/ros-drivers/ackermann_msgs.git

@@ -5,8 +5,7 @@ import datetime
 import threading
 import numpy as np
 
-from ngeeann_av_nav.msg import State2D, Path2D
-from ackermann_msgs.msg import AckermannDrive
+from ngeeann_av_msgs.msg import State2D, Path2D, AckermannDrive
 from geometry_msgs.msg import Pose2D, PoseStamped, Quaternion
 from std_msgs.msg import Float32
 from utils.normalise_angle import normalise_angle

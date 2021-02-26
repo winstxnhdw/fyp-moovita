@@ -7,7 +7,7 @@ import numpy.ma as ma
 import sensor_msgs.point_cloud2 as pc2
 
 from geometry_msgs.msg import Pose, Point, Quaternion, Pose2D
-from ngeeann_av_nav.msg import Path2D, State2D
+from ngeeann_av_msgs.msg import Path2D, State2D
 from nav_msgs.msg import OccupancyGrid, MapMetaData
 from sensor_msgs.msg import LaserScan
 
@@ -287,6 +287,8 @@ def main():
     rospy.init_node("bof")
 
     r = rospy.Rate(10)
+
+    rospy.wait_for_message('/laser/scan', LaserScan)
 
     while not rospy.is_shutdown():
         try:

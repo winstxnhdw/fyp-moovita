@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 
 from geometry_msgs.msg import Pose2D, Pose, PoseArray
-from ngeeann_av_nav.msg import Path2D, State2D
+from ngeeann_av_msgs.msg import Path2D, State2D
 
 class GlobalPathPlanner:
 

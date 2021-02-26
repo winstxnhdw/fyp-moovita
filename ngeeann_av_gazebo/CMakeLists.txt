@@ -49,13 +49,6 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * uncomment the generate_messages entry below
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
-## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   Message1.msg
-#   Message2.msg
-# )
-
 ## Generate services in the 'srv' folder
 # add_service_files(
 #   FILES
@@ -165,9 +158,6 @@ include_directories(
 
 catkin_install_python(PROGRAMS
   nodes/ackermann_controller.py
-  nodes/teleop_drive.py
-  nodes/dynamics.py
-  nodes/traffic.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

@@ -4,7 +4,7 @@ import rospy
 import numpy as np
 
 from geometry_msgs.msg import PoseStamped, Quaternion, Pose2D
-from ngeeann_av_nav.msg import Path2D, State2D
+from ngeeann_av_msgs.msg import Path2D, State2D
 from nav_msgs.msg import Path, OccupancyGrid, MapMetaData
 from std_msgs.msg import Float32
 from utils.heading2quaternion import heading_to_quaternion
@@ -94,12 +94,6 @@ class LocalPathPlanner:
         Callback function to recieve map data
         '''
         self.gmap = msg
-
-    def calc_frenet_path():
-        
-        frenet_path = []
-
-        for index in np.arange()
 
     def target_index_calculator(self, cx, cy):  
         ''' 
