@@ -115,6 +115,7 @@ circle_road_gen.py is a custom script which uses the NumPy library to calculate 
 <div align="center">
 	<img src="https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/pictures/circle_wp_gen.png?raw=true" />
 </div>
+
 #### Description
 circle_wp_gen.py is a custom script which uses the NumPy and pandas library to calculate and generate a csv file that contains the two-dimensional coordinates; x-axis and y-axis in their respective columns. This is primarily used to generate waypoints on a circular road of a certain radius and smoothness. The user is given two different smoothness modes; Point mode and Angle mode. The radius of the circle is calculated from the centre of gazebo world.
 
@@ -154,8 +155,11 @@ Launches nodes used by both RViz and Gazebo when visualizing a vehicle with Acke
 <b>"Because the layman doesn't care unless it looks cool."<b>
 <br />
 <br />
-![Renders](https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/gifs/renders.gif?raw=true)
-![1](https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/gifs/1.gif?raw=true)
-![2](https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/gifs/2.gif?raw=true)
-![3](https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/gifs/3.gif?raw=true)
-![4](https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/gifs/4.gif?raw=true)
+<div align="center">
+	<img src="https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/gifs/renders.gif?raw=true" />
+	<img src="https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/gifs/1.gif?raw=true" />
+	<img src="https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/gifs/2.gif?raw=true" />
+	<img src="https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/gifs/3.gif?raw=true" />
+	<img src="https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/gifs/4.gif?raw=true" />
+</div>
+
