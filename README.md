@@ -112,7 +112,7 @@ circle_road_gen.py is a custom script which uses the NumPy library to calculate 
    - Copy and paste result into your world file
   
 ### circle_wp_gen.py
-<div align="center">
+<div align="left">
 	<img src="https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/pictures/circle_wp_gen.png?raw=true" />
 </div>
 
