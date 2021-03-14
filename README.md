@@ -139,14 +139,13 @@ The user is unable to choose how many waypoints to generate, and the smoothness 
    - Input your desired smoothness in number of points (if you chose Point mode) or degrees (if you chose Angle mode)
 
 ## Launch Files
-<div align="center">
 |Launch File|Launches|Purpose|
 |-----------|--------|-------|
 |gazebo.launch|gazebo, no world, ngeeann_av|For debugging
 |road.launch|gazebo, road.world, ngeeann_av|Foundational launch file for future launch files
 |display.launch|rviz, ngeeann_av|Foundational launch file for future launch files
 |controller.launch|axle controllers, steer controllers|Foundational launch file for future launch files
-<\div>
+
 ### ackermann_vehicle.launch
 Launches the populated_road.world file into Gazebo and spawns the ngeeann_av onto a populated road world. It also launches ackermann_controller.launch, RViz, the controller spawner and ackermann controller. If your Gazebo does not start, this is because you do not have the required Gazebo models in your models folder. To fix this, you may change the ackermann_vehicle.launch parameters to launch the unpopulated road variant, road.launch.
 
