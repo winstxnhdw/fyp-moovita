@@ -21,3 +21,6 @@ path_tracker:
     yawrate_gain: 1.0
     steering_limits: 0.95
     centreofgravity_to_frontaxle: 1.483
+
+bayesian_occupancy_filter:
+    centreofgravity_to_lidar: 2.34

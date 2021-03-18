@@ -139,9 +139,15 @@ class GridMapping(object):
     
     def __init__(self):
 
+        try:
+            self.planner_params = rospy.get_param("/bayesian_occupancy_filter")
+            self.cg2lidar = self.planner_params["centreofgravity_to_lidar"]
+
+        except:
+            raise Exception("Missing ROS parameters. Check the configuration file.")
+
         self.lock = threading.Lock()
         self.scan = None
-        self.cg2lidar = 2.34
         self.x = None
         self.y = None
         self.yaw = None

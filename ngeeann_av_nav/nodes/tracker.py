@@ -130,7 +130,7 @@ class PathTracker:
     # Calculates the desired yawrate of the vehicle
     def trajectory_yawrate_calc(self):
 
-        target_range = 2    #number of points to look ahead and behind
+        target_range = 2    # number of points to look ahead and behind
         delta_theta = 0.0
         delta_s = 0.0
         w = 0.0
@@ -161,7 +161,7 @@ class PathTracker:
         crosstrack_term = np.arctan2((self.k * self.crosstrack_error), (self.ksoft + self.target_vel))
         heading_term = normalise_angle(self.heading_error)
         yawrate_term = 0.0
-        #yawrate_term = -self.kyaw * self.yawrate_error
+        # yawrate_term = -self.kyaw * self.yawrate_error
         
         sigma_t = crosstrack_term + heading_term + yawrate_term
 
