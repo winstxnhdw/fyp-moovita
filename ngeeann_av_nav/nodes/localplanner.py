@@ -9,23 +9,6 @@ from nav_msgs.msg import Path, OccupancyGrid, MapMetaData
 from std_msgs.msg import Float32
 from utils.heading2quaternion import heading_to_quaternion
 from utils.cubic_spline_planner import *
-from utils.spline_planner import *
-
-class FrenetPath:
-
-    def __init__(self):
-
-        # Intialise the longitudinal frenet coordinates
-        self.s = []
-        self.s_s = []
-        self.s_ss = []
-        self.s_sss = []
-
-        # Initialise the lateral frenet coordinates
-        self.d = []
-        self.d_d = []
-        self.d_dd = []
-        self.d_ddd = []
 
 class LocalPathPlanner:
 
