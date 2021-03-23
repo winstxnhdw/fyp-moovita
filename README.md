@@ -5,7 +5,7 @@
 </div>
 
 ## Abstract
-This project contains the maintained stable variant of the [fyp-moovita](https://github.com/reuben-thomas/fyp-moovita) repository. It covers the development of a robust non-holonomic autonomous vehicle platform in a simulated environment using ROS and Gazebo. A sense-think-act cycle is implemented to navigate the virtual world, avoiding static and moving objects.
+This project contains the maintained stable variant of the [fyp-moovita](https://github.com/reuben-thomas/fyp-moovita) repository. It covers the development of a robust non-holonomic autonomous vehicle platform in a simulated environment using ROS and Gazebo 7.1. A sense-think-act cycle is implemented to navigate the virtual world, avoiding static and moving objects.
 <br />
 <br />
 <div align="center">
