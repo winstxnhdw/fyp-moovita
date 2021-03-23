@@ -21,7 +21,6 @@ sudo apt-cache search ros-kinetic
 # Setup Environment
 echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
 source ~/.bashrc
-source /opt/ros/kinetic/setup.bash
 
 # Install the ROS dependencies for building packages
 sudo apt install python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential
