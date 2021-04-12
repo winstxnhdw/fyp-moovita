@@ -4,7 +4,7 @@ import rospy
 import numpy as np
 
 from utils.heading2quaternion import heading_to_quaternion
-from utils.cubic_spline_planner import calc_spline_course
+from utils.cubic_spline_pp import generate_cubic_path
 from geometry_msgs.msg import PoseStamped, Quaternion, Pose2D
 from ngeeann_av_nav.msg import Path2D, State2D
 from nav_msgs.msg import Path, OccupancyGrid, MapMetaData
@@ -134,7 +134,7 @@ class LocalPathPlanner:
         reroute_x = [dev_x1, dev_x2, avoid_x1, avoid_x2, intersect_x1, intersect_x2]
         reroute_y = [dev_y1, dev_y2, avoid_y1, avoid_y2, intersect_y1, intersect_y2]
         
-        rcx, rcy, rcyaw = calc_spline_course(reroute_x, reroute_y, self.ds)
+        rcx, rcy, rcyaw = generate_cubic_path(reroute_x, reroute_y, self.ds)
 
         # stiching to form new path
         cx   = np.concatenate(( cx[0 : collide_id - 151], rcx, cx[(collide_id_end + 151) : ] ))
@@ -216,7 +216,7 @@ class LocalPathPlanner:
 
         ''' Uses the cubic_spline_planner library to interpolate a cubic spline path over the given waypoints '''
 
-        cx, cy, cyaw = calc_spline_course(self.ax, self.ay, self.ds)
+        cx, cy, cyaw = generate_cubic_path(self.ax, self.ay, self.ds)
         cx, cy, cyaw = self.determine_path(cx, cy, cyaw)
 
         cells = min(len(cx), len(cy), len(cyaw))
