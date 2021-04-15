@@ -216,7 +216,7 @@ class LocalPathPlanner:
 
         ''' Uses the cubic_spline_planner library to interpolate a cubic spline path over the given waypoints '''
 
-        cx, cy, cyaw = generate_cubic_path(self.ax, self.ay, self.ds)
+        cx, cy, cyaw, _ = generate_cubic_path(self.ax, self.ay, self.ds)
         cx, cy, cyaw = self.determine_path(cx, cy, cyaw)
 
         cells = min(len(cx), len(cy), len(cyaw))
