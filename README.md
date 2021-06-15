@@ -75,11 +75,11 @@ Recommended its equivalent or higher:
    
 4. Install [Desktop-Full ROS Kinetic](http://wiki.ros.org/kinetic/Installation/Ubuntu)
    - Type `chmod +x ros-kinetic-desktop-full-install.sh`
-   - Type `./ros-kinetic-desktop-full-install.sh` to install Desktop-Full ROS Kinetic
+   - Type `sh ros-kinetic-desktop-full-install.sh` to install Desktop-Full ROS Kinetic
   
 5. Install the required packages
    - Type `chmod +x requirements.sh`
-   - Type `./requirements.sh` 
+   - Type `sh requirements.sh` 
    
 ## Quick Start
 1. Launch ngeeann_av.launch
