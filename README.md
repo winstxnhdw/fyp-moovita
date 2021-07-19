@@ -110,33 +110,9 @@ circle_road_gen.py is a custom script which uses the NumPy library to calculate 
    - Input your desired radius in metres
    - Input your desired smoothness in degrees (lower value is smoother)
    - Copy and paste result into your world file
-  
+
 ### circle_wp_gen.py
-<div align="center">
-	<img src="https://github.com/winstxnhdw/WaypointGenerator/blob/master/resources/circlegen.gif"/>
-</div>
-
-#### Description
-circle_wp_gen.py is a custom script which uses the NumPy and pandas library to calculate and generate a CSV file that contains the two-dimensional coordinates; x-axis and y-axis in their respective columns. This is primarily used to generate waypoints on a circular road of a certain radius and smoothness. The user is given two different smoothness modes; Point mode and Angle mode. The radius of the circle is calculated from the centre of gazebo world.
-
-#### Point mode
-The user is able to choose how many waypoints to generate, and the smoothness of the circular waypoint is based on how many points the user has set. More points means a smoother waypoint
-
-#### Angle mode
-The user is unable to choose how many waypoints to generate, and the smoothness of the circular waypoint is based on the degree value the user has set. Lower value means a smoother waypoint.
-
-#### Usage
-1. Download the circle_wp_gen.py script if you have not cloned this repository.
-
-2. Go to the script's directory
-   - Open your terminal
-   - Type `cd scripts`
-   
-3. Run the script
-   - Type `python circle_wp_gen.py`
-   - Choose your desired smoothness mode
-   - Input your desired radius in metres
-   - Input your desired smoothness in number of points (if you chose Point mode) or degrees (if you chose Angle mode)
+More information about [cirlce_wp_gen.py](https://github.com/winstxnhdw/WaypointGenerator/blob/master/circle/circle_wp_gen.py) can now be found within the [WaypointGenerator](https://github.com/winstxnhdw/WaypointGenerator) repository.
 
 ## Launch Files
 |Launch File|Launches|Purpose|

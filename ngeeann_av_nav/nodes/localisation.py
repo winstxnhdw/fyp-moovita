@@ -7,7 +7,6 @@ import numpy as np
 from gazebo_msgs.srv import GetModelState  
 from nav_msgs.msg import Odometry
 from ngeeann_av_msgs.msg import State2D
-from tf.transformations import quaternion_from_euler
 
 class Localisation:
 

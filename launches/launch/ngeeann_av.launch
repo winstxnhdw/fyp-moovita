@@ -57,7 +57,7 @@
 	<node name="local_planner" pkg="ngeeann_av_nav" type="localplanner.py"/>
 
 	<!-- Global Path Planner node -->
-	<param name="waypoints" type="string" value="$(find ngeeann_av_nav)/scripts/$(arg file_name)"/>
+	<param name="waypoints" type="string" value="$(find ngeeann_av_nav)/data/$(arg file_name)"/>
 	<node name="global_planner" pkg="ngeeann_av_nav" type="globalplanner.py"/>
 
 	<!-- Bayesian Occupancy Filter node -->

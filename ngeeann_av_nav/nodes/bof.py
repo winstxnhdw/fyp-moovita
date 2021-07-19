@@ -1,14 +1,12 @@
 #!/usr/bin/env python
 
-import threading
 import rospy
+import threading
 import numpy as np
-import numpy.ma as ma
-import sensor_msgs.point_cloud2 as pc2
 
-from geometry_msgs.msg import Pose, Point, Quaternion, Pose2D
-from ngeeann_av_msgs.msg import Path2D, State2D
-from nav_msgs.msg import OccupancyGrid, MapMetaData
+from geometry_msgs.msg import Pose, Point, Quaternion
+from ngeeann_av_msgs.msg import State2D
+from nav_msgs.msg import OccupancyGrid
 from sensor_msgs.msg import LaserScan
 
 class Map:

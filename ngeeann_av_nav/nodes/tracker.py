@@ -6,8 +6,8 @@ import threading
 import numpy as np
 
 from ngeeann_av_msgs.msg import State2D, Path2D, AckermannDrive
-from geometry_msgs.msg import Pose2D, PoseStamped, Quaternion
-from std_msgs.msg import Float32
+from geometry_msgs.msg import PoseStamped
+from std_msgs.msg import Float6
 from utils.normalise_angle import normalise_angle
 from utils.heading2quaternion import heading_to_quaternion
 
@@ -22,7 +22,7 @@ class PathTracker:
         # Initialise subscribers
         self.localisation_sub = rospy.Subscriber('/ngeeann_av/state2D', State2D, self.vehicle_state_cb)
         self.path_sub = rospy.Subscriber('/ngeeann_av/path', Path2D, self.path_cb, queue_size=10)
-        self.target_vel_sub = rospy.Subscriber('/ngeeann_av/target_velocity', Float32, self.target_vel_cb, queue_size=10)
+        self.target_vel_sub = rospy.Subscriber('/ngeeann_av/target_velocity', Float64, self.target_vel_cb, queue_size=10)
 
         # Load parameters
         try:

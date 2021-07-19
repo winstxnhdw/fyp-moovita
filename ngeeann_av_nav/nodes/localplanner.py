@@ -3,12 +3,12 @@
 import rospy
 import numpy as np
 
-from utils.heading2quaternion import heading_to_quaternion
-from utils.cubic_spline_pp import generate_cubic_path
-from geometry_msgs.msg import PoseStamped, Quaternion, Pose2D
+from geometry_msgs.msg import PoseStamped, Pose2D
 from ngeeann_av_nav.msg import Path2D, State2D
-from nav_msgs.msg import Path, OccupancyGrid, MapMetaData
-from std_msgs.msg import Float32
+from nav_msgs.msg import Path, OccupancyGrid
+from std_msgs.msg import Float64
+from utils.heading2quaternion import heading_to_quaternion
+from utils.cubic_spline_interpolator import generate_cubic_path
 
 class LocalPathPlanner:
 
@@ -19,7 +19,7 @@ class LocalPathPlanner:
         # Initialise publishers
         self.local_planner_pub = rospy.Publisher('/ngeeann_av/path', Path2D, queue_size=10)
         self.path_viz_pub = rospy.Publisher('/nggeeann_av/viz_path', Path, queue_size=10)
-        self.target_vel_pub = rospy.Publisher('/ngeeann_av/target_velocity', Float32, queue_size=10)
+        self.target_vel_pub = rospy.Publisher('/ngeeann_av/target_velocity', Float64, queue_size=10)
 
         # Initialise subscribers
         self.goals_sub = rospy.Subscriber('/ngeeann_av/goals', Path2D, self.goals_cb, queue_size=10)
