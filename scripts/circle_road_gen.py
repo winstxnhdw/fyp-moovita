@@ -1,18 +1,25 @@
 from __future__ import print_function
-import math
 import numpy as np
 
-r = input("Radius in metres: ")
-angle = input("Angle in radians: ")
+def main():
 
-print("\nRadius: ", r, "\nAngle: ", angle)
+	radius = float(input("Radius in metres: "))
+	angle = float(input("Angle in radians: "))
 
-theta = 0
+	print("\nRadius: {}\nAngle {}: ".format(radius, angle))
 
-for n in np.arange(0, 2*math.pi, angle):
-	x = r * math.cos(theta)
-	y = r * math.sin(theta)
-	theta = theta + angle
-	print ('<point>', x, ' ', y, ' ', 0, '</point>', sep = '')
+	theta = np.arange(0, 2*np.pi, angle)
+	x = radius * np.cos(theta)
+	y = radius * np.sin(theta)
+	X = np.concatenate((X, X[0]))
+	Y = np.concatenate((Y, Y[0]))
 
-print ('<point>', r, ' ', 0, ' ', 0, '</point>', sep = '')
+	generate_road_structure(X, Y)
+
+def generate_road_structure(X, Y):
+
+	for x, y in zip(X, Y):
+		print("<point> {} {} 0 </point>".format(x, y))
+
+if __name__ == "__main__":
+    main()
