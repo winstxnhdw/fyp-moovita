@@ -1,6 +1,6 @@
 # AUTONOMOUS VEHICLE: CONTROL AND BEHAVIOUR
 
-### Ngee Ann Polytechnic Engineering Science Final Year Project with MooVita, 2020
+<p align="center"><b>Ngee Ann Polytechnic Engineering Science Final Year Project with MooVita, 2020</b></p>
 
 <div align="center">
     <img src="https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/pictures/ngeeann_av_ultrawide.png?raw=true" />
