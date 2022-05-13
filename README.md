@@ -3,7 +3,7 @@
 <p align="center"><b>Ngee Ann Polytechnic Engineering Science Final Year Project with MooVita, 2020</b></p>
 
 <div align="center">
-    <img src="https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/pictures/ngeeann_av_ultrawide.png?raw=true" />
+    <img src="resources/pictures/ngeeann_av_ultrawide.png" />
 </div>
 
 ## Abstract
@@ -12,7 +12,7 @@ This project contains the maintained stable variant of the [fyp-moovita](https:/
 <br />
 <br />
 <div align="center">
-    <img src="https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/gifs/obstacle_avoidance.gif?raw=true" />
+    <img src="resources/gifs/obstacle_avoidance.gif" />
 </div>
 
 ## Table of Contents
@@ -105,7 +105,7 @@ Recommended its equivalent or higher:
 ### circle_road_gen.py
 
 <div align="center">
-    <img src="https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/gifs/road_gen.gif?raw=true" />
+    <img src="resources/gifs/road_gen.gif" />
 </div>
 
 #### Description
@@ -152,9 +152,9 @@ Launches nodes used by both RViz and Gazebo when visualizing a vehicle with Acke
 <p align="center"><b>"Because the layman doesn't care unless it looks cool."</b></p>
 
 <div align="center">
-    <img src="https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/gifs/renders.gif?raw=true" />
-    <img src="https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/gifs/1.gif?raw=true" />
-    <img src="https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/gifs/2.gif?raw=true" />
-    <img src="https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/gifs/3.gif?raw=true" />
-    <img src="https://github.com/winstxnhdw/AutoCarROS/blob/master/resources/gifs/4.gif?raw=true" />
+    <img src="resources/gifs/renders.gif" />
+    <img src="resources/gifs/1.gif" />
+    <img src="resources/gifs/2.gif" />
+    <img src="resources/gifs/3.gif" />
+    <img src="resources/gifs/4.gif" />
 </div>
