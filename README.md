@@ -64,7 +64,7 @@ Recommended its equivalent or higher:
    - [rospy](http://wiki.ros.org/rospy)
    - [NumPy](https://pypi.org/project/numpy/)
    - [pandas](https://pandas.pydata.org/getting_started.html)
-  
+
 3. [Gazebo 7.16](http://gazebosim.org/tutorials?tut=install_ubuntu&ver=7.0&cat=install)
    - [gazebo_ros_pkgs](http://gazebosim.org/tutorials?tut=ros_installing&cat=connect_ros)
 
@@ -88,7 +88,7 @@ Recommended its equivalent or higher:
 4. Install [Desktop-Full ROS Kinetic](http://wiki.ros.org/kinetic/Installation/Ubuntu)
    - Type `chmod +x ros-kinetic-desktop-full-install.sh`
    - Type `sh ros-kinetic-desktop-full-install.sh` to install Desktop-Full ROS Kinetic
-  
+
 5. Install the required packages
    - Type `chmod +x requirements.sh`
    - Type `sh requirements.sh`
@@ -155,8 +155,8 @@ Launches nodes used by both RViz and Gazebo when visualizing a vehicle with Acke
 
 <div align="center">
     <img src="resources/gifs/renders.gif" />
-    <img src="resources/gifs/1.gif" />
-    <img src="resources/gifs/2.gif" />
-    <img src="resources/gifs/3.gif" />
-    <img src="resources/gifs/4.gif" />
+    <img src="resources/gifs/scene_one.gif" />
+    <img src="resources/gifs/scene_two.gif" />
+    <img src="resources/gifs/scene_three.gif" />
+    <img src="resources/gifs/scene_four.gif" />
 </div>
